@@ -1,0 +1,66 @@
+<div class="todo_body">
+  <div class="add-container">
+    <h1 class="app-header">ADD NEW TO DO LIST</h1>
+    <div class="add-task">
+      <input
+        type="text"
+        autocomplete="off"
+        placeholder="Add New List"
+        [(ngModel)]="listName"
+        class="task-input"
+      />
+      <input
+        type="submit"
+        value=""
+        class="submit-task"
+        (click)="addNewList()"
+        title="Add Task"
+      />
+    </div>
+  </div>
+
+  <div class="task_body">
+    <div class="app-container" *ngFor="let item of todoList">
+      <h1 class="app-header" style="display: inline-block">
+        {{ item.List.Name }}
+      </h1>
+      <span
+        (click)="deleteList(item.List.Id)"
+        class="delete-btn1"
+        title="Delete Task"
+      ></span>
+      <div class="add-task">
+        <input
+          type="text"
+          autocomplete="off"
+          placeholder="Add New Task"
+          [(ngModel)]="item.TaskName"
+          class="task-input"
+        />
+        <button
+          type="button"
+          class="submit-task"
+          (click)="addNewListTask(item)"
+        ></button>
+      </div>
+      <ul class="task-list" *ngFor="let taskItem of item.Task">
+        <li class="task-list-item">
+          <label class="task-list-item-label">
+            <input
+              type="checkbox"
+              [(ngModel)]="taskItem.Done"
+              style="vertical-align: text-bottom"
+              (change)="markDone(item.List.Id, taskItem.Id, $event)"
+            />
+            <span style="color: white">{{ taskItem.Task }}</span>
+          </label>
+          <span
+            (click)="deleteTask(item.List.Id, taskItem.Id)"
+            class="delete-btn"
+            title="Delete Task"
+          ></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

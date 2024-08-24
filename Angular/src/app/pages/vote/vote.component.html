@@ -1,0 +1,29 @@
+<!-- <div *ngFor="let proposal of proposals; let i = index">
+  <h2>{{ proposal.name }}</h2>
+  <p>Votes: {{ proposal.voteCount }}</p>
+  <button (click)="vote(i)">Vote</button>
+</div> -->
+
+<div class="vote">
+  <h1 class="title">Rise of the Next Champion</h1>
+  <div class="vote_body">
+    <div class="container" *ngFor="let proposal of proposals; let i = index">
+      <div class="wrapper">
+        <div
+          class="banner-image"
+          [ngClass]="{
+            banner_img_0: i == 0,
+            banner_img_1: i == 1,
+            banner_img_2: i == 2
+          }"
+        ></div>
+
+        <h1>{{ proposal.name }}</h1>
+        <p>Votes: {{ proposal.voteCount }}</p>
+      </div>
+      <div class="button-wrapper">
+        <button class="btn fill" (click)="vote(i)">Vote</button>
+      </div>
+    </div>
+  </div>
+</div>

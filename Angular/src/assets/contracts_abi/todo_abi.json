@@ -1,0 +1,218 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_utilityAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "tasksByListId",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "Id",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "string",
+        "name": "Task",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "Done",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "userLists",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "Id",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "string",
+        "name": "Name",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "GetAllListWithTasks",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "bytes32",
+                "name": "Id",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "string",
+                "name": "Name",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct Todo.TodoList",
+            "name": "List",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "bytes32",
+                "name": "Id",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "string",
+                "name": "Task",
+                "type": "string"
+              },
+              {
+                "internalType": "bool",
+                "name": "Done",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct Todo.TodoTask[]",
+            "name": "Task",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct Todo.ListOfUserTask[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
+    "name": "AddNewList",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "listId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
+    "name": "AddNewListTask",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "listId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "taskId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bool",
+        "name": "done",
+        "type": "bool"
+      }
+    ],
+    "name": "MarkTaskDone",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "listId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "DeleteList",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "listId",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "taskId",
+        "type": "bytes32"
+      }
+    ],
+    "name": "DeleteTaskFromList",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

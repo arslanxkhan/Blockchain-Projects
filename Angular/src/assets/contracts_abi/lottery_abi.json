@@ -1,0 +1,182 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_ticketPrice",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ticketCount",
+        "type": "uint256"
+      }
+    ],
+    "name": "TicketPurchase",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "winner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "prizeAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "WinnerDrawer",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "participants",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "ticketPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "ticketsCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "BuyTickets",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function",
+    "payable": true
+  },
+  {
+    "inputs": [],
+    "name": "DrawWinner",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "GetParticipants",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "GetTicketsCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "GetTicketPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  }
+]

@@ -1,0 +1,32 @@
+[
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "userAdress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "itemName",
+          "type": "string"
+        }
+      ],
+      "name": "GenerateKey",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    }
+  ]

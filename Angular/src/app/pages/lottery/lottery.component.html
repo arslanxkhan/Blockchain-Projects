@@ -1,0 +1,53 @@
+<div class="lottery-container">
+  <header class="lottery-header">
+    <h1>Lottery DApp</h1>
+    <p>Try your luck and win the prize pool! (Admin will draw the lottery)</p>
+    <div class="wallet-info">
+      <strong>Connected Wallet:</strong> {{ account }}
+    </div>
+    <div class="wallet-info">
+      <strong>Balance:</strong> {{ currentBalance }}
+    </div>
+  </header>
+
+  <main class="lottery-main">
+    <section class="ticket-purchase">
+      <h2>Buy Tickets</h2>
+      <input
+        type="number"
+        [(ngModel)]="ticketAmount"
+        placeholder="Enter number of tickets"
+        class="ticket-input"
+      />
+      <button (click)="buyTickets(ticketAmount)" class="btn-buy">
+        Buy Tickets
+      </button>
+    </section>
+
+    <section class="participant-info">
+      <h2>Participants</h2>
+      <button (click)="getParaticipants()" class="btn-refresh">
+        Refresh Participants
+      </button>
+      <ul>
+        <li *ngFor="let participant of paraticipants">
+          {{ participant }}
+        </li>
+      </ul>
+    </section>
+
+    <section class="lottery-info">
+      <h2>Lottery Information</h2>
+      <div><strong>Ticket Price:</strong> {{ ticketPrice }} ETH</div>
+      <div><strong>Your Total Tickets:</strong> {{ totalTickets }}</div>
+    </section>
+
+    <section *ngIf="isOwner" class="draw-winner">
+      <button (click)="drawWinner()" class="btn-draw">Draw Winner</button>
+    </section>
+  </main>
+
+  <footer class="lottery-footer">
+    <p>Status: {{ statusMessage }}</p>
+  </footer>
+</div>
