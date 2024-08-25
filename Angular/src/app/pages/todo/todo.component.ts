@@ -22,19 +22,9 @@ export class TodoComponent implements OnInit {
 
   async ngOnInit() {
     var accounts: string[] = [];
-    switch (AppConfig.enviroment) {
-      case 'prod':
-        accounts = await (window as any).ethereum.request({
-          method: 'eth_requestAccounts',
-        });
-        this.account = accounts[0];
-        break;
 
-      default:
-        accounts = await this.todoContractService.getAccounts();
-        this.account = accounts[0];
-        break;
-    }
+    accounts = await this.todoContractService.getAccounts();
+    this.account = accounts[0];
     this.appEventsService.accountList.emit(accounts);
 
     this.appEventsService.SelectedAccount.subscribe(async (x) => {

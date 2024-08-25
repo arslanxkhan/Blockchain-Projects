@@ -26,19 +26,8 @@ export class LotteryComponent implements OnInit {
   async ngOnInit() {
     var accounts: string[] = [];
 
-    switch (AppConfig.enviroment) {
-      case 'prod':
-        accounts = await (window as any).ethereum.request({
-          method: 'eth_requestAccounts',
-        });
-        this.account = accounts[0];
-        break;
-
-      default:
-        accounts = await this.lotteryContractService.getAccounts();
-        this.account = accounts[0];
-        break;
-    }
+    accounts = await this.lotteryContractService.getAccounts();
+    this.account = accounts[0];
 
     this.isOwner = await this.lotteryContractService.isOwner(this.account);
     this.appEventsService.accountList.emit(accounts);

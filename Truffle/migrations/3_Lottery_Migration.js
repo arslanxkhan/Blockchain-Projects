@@ -1,7 +1,7 @@
 const lottery = artifacts.require("./Lottery/Lottery.sol");
 
 module.exports = function (deployer) {
-  const ticketPriceInEther = 0.5;
+  const ticketPriceInEther = "0.0000000005";
   const ticketPriceInWei = web3.utils.toWei(ticketPriceInEther.toString(), 'ether'); 
 
 

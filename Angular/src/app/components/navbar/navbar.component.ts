@@ -13,12 +13,13 @@ export class NavbarComponent implements OnInit {
     private router: Router
   ) {}
 
-  selectedAccount: string = '';
+  selectedAccount: { name: string } = { name: '' };
   accounts: { name: string }[] = [];
   metamaskInstalled: boolean = false;
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.metamaskInstalled = this.isMetamaskInstalled();
+
     this.appEventsService.accountList.subscribe((x) => {
       this.accounts = x;
       this.selectedAccount = x[0];

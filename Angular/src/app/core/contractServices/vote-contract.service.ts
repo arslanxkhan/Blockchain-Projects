@@ -15,6 +15,9 @@ export class VoteContractService {
       voteAbi,
       this.contractAddress
     );
+
+    console.log(voteAbi);
+    console.log(this.contractAddress);
   }
 
   public async getAccounts() {
@@ -31,14 +34,30 @@ export class VoteContractService {
 
   async vote(proposalIndex: number, account: string) {
     try {
-      await this.votingContract.methods.vote(proposalIndex).send({
+      const gasPrice = await this.accountService.getGasPrice(); // Get current gas price
+      const gasEstimate = await this.votingContract.methods.AddVote(proposalIndex).estimateGas({ from: account }); // Estimate gas
+  
+      console.log("gasPrice",gasPrice)
+      console.log("gasEstimate",gasEstimate)
+      await this.votingContract.methods.AddVote(proposalIndex).send({
         from: account,
+        gas: gasEstimate,
+        gasPrice: gasPrice
+      })
+      .on('transactionHash', (hash:any) => {
+        console.log('Transaction Hash:', hash);
+      })
+      .on('receipt', (receipt:any) => {
+        console.log('Transaction Receipt:', receipt);
       });
     } catch (error: any) {
+      console.error("Transaction error:", error.message);
       if (error.message.includes('You have already voted')) {
         alert('You have already voted for this proposal.');
+      } else {
+        alert('Transaction failed: ' + error.message);
       }
-      console.error(error);
     }
   }
+  
 }

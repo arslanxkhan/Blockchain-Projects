@@ -88,11 +88,11 @@ module.exports = {
           MNEMONIC,
           `https://eth-holesky.g.alchemy.com/v2/${ALCHEMY_PROJECT_ID}`
         ),
-      network_id: "*", // Holesky network ID
-      gas: 5500000, // Gas limit (not typically used with Solana)
-      confirmations: 2, // Number of confirmations to wait between deployments
+      network_id: 17000, // Correct Holesky network ID
+      gas: 5500000,      // Gas limit appropriate for Ethereum
+      confirmations: 2,  // Number of confirmations to wait between deployments
       timeoutBlocks: 200, // Number of blocks before a deployment times out
-      skipDryRun: true, // Skip dry run before migrations
+      skipDryRun: true,  // Skip dry run before migrations
     },
 
     // Useful for testing. The `development` name is special - truffle uses it by default

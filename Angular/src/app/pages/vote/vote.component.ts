@@ -22,19 +22,8 @@ export class VoteComponent implements OnInit {
     this.proposals = await this.voteContractService.getProposals();
 
     var accounts: string[] = [];
-    switch (AppConfig.enviroment) {
-      case 'prod':
-        accounts = await (window as any).ethereum.request({
-          method: 'eth_requestAccounts',
-        });
-        this.account = accounts[0];
-        break;
-
-      default:
-        accounts = await this.voteContractService.getAccounts();
-        this.account = accounts[0];
-        break;
-    }
+    accounts = await this.voteContractService.getAccounts();
+    this.account = accounts[0];
 
     this.appEventsService.accountList.emit(accounts);
 

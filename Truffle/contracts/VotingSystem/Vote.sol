@@ -16,7 +16,7 @@ contract Vote {
         }
     }
 
-    function vote(uint proposal) public {
+    function AddVote(uint256 proposal) public {
         require(!voters[msg.sender], "You have already voted.");
         voters[msg.sender] = true;
         proposals[proposal].voteCount += 1;
