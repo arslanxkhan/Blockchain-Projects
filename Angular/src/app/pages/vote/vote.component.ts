@@ -12,6 +12,8 @@ import { AppConfig } from 'src/app/core/constants/appConfig';
 export class VoteComponent implements OnInit {
   proposals: any[] = [];
   account: string = '';
+  accountPrivateKey: any =
+    'private key of selected account';
 
   constructor(
     private voteContractService: VoteContractService,
@@ -25,6 +27,7 @@ export class VoteComponent implements OnInit {
     accounts = await this.voteContractService.getAccounts();
     this.account = accounts[0];
 
+    console.log(accounts)
     this.appEventsService.accountList.emit(accounts);
 
     this.appEventsService.SelectedAccount.subscribe((x) => {
@@ -34,6 +37,9 @@ export class VoteComponent implements OnInit {
 
   async vote(proposalIndex: number) {
     await this.voteContractService.vote(proposalIndex, this.account);
+
+    //below line is use when you want to connect with 3rd party like Alchmey 
+    // await this.voteContractService.sendSignedTransaction(proposalIndex, this.account, this.accountPrivateKey);
     this.proposals = await this.voteContractService.getProposals(); // Refresh proposals
   }
 }

@@ -1,7 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import Web3, { AbiItem } from 'web3';
 import { AppConfig } from '../constants/appConfig';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -11,9 +10,16 @@ export class AccountService {
   accounts: string[] = [];
 
   constructor() {
-    this.web3 = new Web3(AppConfig.blockchainNetworkUrl);
-    this.web3.eth.handleRevert = true;
+    if (AppConfig.enviroment === 'prod') {
+      this.web3 = new Web3((window as any).ethereum);
+    } else {
+      this.web3 = new Web3(AppConfig.blockchainNetworkUrl);
+    }
+    // this.web3.eth.handleRevert = true;
+    console.log(AppConfig.enviroment);
     console.log(AppConfig.blockchainNetworkUrl);
+
+
     this.connectWallet();
   }
 
@@ -73,5 +79,13 @@ export class AccountService {
 
   public async getGasPrice() {
     return await this.web3.eth.getGasPrice();
+  }
+
+  public async signTransaction(txData: any, privateKey: any) {
+    return await this.web3.eth.accounts.signTransaction(txData, privateKey);
+  }
+
+  public async sendSignedTransaction(rawTransaction: any): Promise<any> {
+    return await this.web3.eth.sendSignedTransaction(rawTransaction as string);
   }
 }

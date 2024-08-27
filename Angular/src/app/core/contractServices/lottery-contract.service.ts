@@ -39,12 +39,23 @@ export class LotteryContractService {
   }
 
   async buyTickets(account: any, amount: any) {
-    var price = this.accountService.convertToWei(amount);
-    // console.log(price);
     try {
+   var price = this.accountService.convertToWei(amount);
+    // console.log(price);
+    const gasPrice = await this.accountService.getGasPrice();
+    const gasEstimate = await this.lotteryContract.methods
+      .BuyTickets()
+      .estimateGas({ from: account });
+
+  
       return await this.lotteryContract.methods
         .BuyTickets()
-        .send({ from: account, value: price, gas: '200000' });
+        .send({
+          from: account,
+          value: price,
+          gas: gasEstimate,
+          gasPrice: gasPrice,
+        });
     } catch (error: any) {
       console.error(error);
     }

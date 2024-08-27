@@ -3,7 +3,7 @@ pragma solidity >=0.8.0 <=0.9.0;
 
 contract Lottery {
     address public owner;
-    uint public ticketPrice;
+    uint256 public ticketPrice;
     address[] public participants;
     mapping(address => uint) public ticketsCount;
     event TicketPurchase(address indexed buyer, uint ticketCount);
@@ -14,7 +14,7 @@ contract Lottery {
         _;
     }
 
-    constructor(uint _ticketPrice) {
+    constructor(uint256 _ticketPrice) {
         owner = msg.sender;
         ticketPrice = _ticketPrice;
     }
