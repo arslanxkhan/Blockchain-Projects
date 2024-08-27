@@ -41,7 +41,7 @@ export class LotteryContractService {
   async buyTickets(account: any, amount: any) {
     try {
    var price = this.accountService.convertToWei(amount);
-    // console.log(price);
+    console.log("ToWei: ", price);
     const gasPrice = await this.accountService.getGasPrice();
     const gasEstimate = await this.lotteryContract.methods
       .BuyTickets()
