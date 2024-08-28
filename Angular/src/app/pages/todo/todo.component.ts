@@ -21,21 +21,20 @@ export class TodoComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    var accounts: string[] = [];
-
-    accounts = await this.todoContractService.getAccounts();
-    this.account = accounts[0];
-    this.appEventsService.accountList.emit(accounts);
+    var account = this.appEventsService.getSelectedAccount();
+    if (account) {
+      this.account = account;
+    }
 
     this.appEventsService.SelectedAccount.subscribe(async (x) => {
       this.account = x;
       await this.getAllList();
     });
-
     await this.getAllList();
   }
 
   async getAllList() {
+    if (!this.account) return;
     this.todoList = await this.todoContractService.getAllListWithTasks(
       this.account
     );

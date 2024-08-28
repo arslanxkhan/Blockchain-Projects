@@ -43,9 +43,10 @@ export class LotteryContractService {
    var price = this.accountService.convertToWei(amount);
     console.log("ToWei: ", price);
     const gasPrice = await this.accountService.getGasPrice();
+
     const gasEstimate = await this.lotteryContract.methods
       .BuyTickets()
-      .estimateGas({ from: account });
+      .estimateGas({ from: account,value: price  });
 
   
       return await this.lotteryContract.methods
@@ -73,6 +74,6 @@ export class LotteryContractService {
 
   async isOwner(account: any) {
     const ownerAddress = await this.lotteryContract.methods.owner().call();
-    return ownerAddress.toLowerCase() === account.toLowerCase();
+    return ownerAddress?.toLowerCase() === account?.toLowerCase();
   }
 }

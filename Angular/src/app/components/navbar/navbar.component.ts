@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AppEventsService } from './../../core/services/app-events.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   constructor(
     private appEventsService: AppEventsService,
-    private router: Router
+    private router: Router,
+    private ngZone: NgZone
   ) {}
 
   selectedAccount: { name: string } = { name: '' };
@@ -23,16 +24,23 @@ export class NavbarComponent implements OnInit {
     this.appEventsService.accountList.subscribe((x) => {
       this.accounts = x;
       this.selectedAccount = x[0];
+      this.ngZone.run(() => {
+        setTimeout(() => {
+          this.appEventsService.SelectedAccount.emit(this.selectedAccount);
+        }, 10);
+      });
+      this.appEventsService.setSelectedAccount(this.selectedAccount);
     });
   }
 
   onAccountChange(value: any) {
-    this.appEventsService.SelectedAccount.emit(value.target.value);
+    var account = value.target.value;
+    this.appEventsService.SelectedAccount.emit(account);
+    this.appEventsService.setSelectedAccount(account);
   }
 
   goToHome() {
-    this.accounts = [];
-
+    // this.accounts = [];
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 50);

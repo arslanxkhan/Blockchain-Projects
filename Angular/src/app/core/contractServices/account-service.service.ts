@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { AppEventsService } from './../services/app-events.service';
+import { Injectable, NgZone } from '@angular/core';
 import Web3, { AbiItem } from 'web3';
 import { AppConfig } from '../constants/appConfig';
 @Injectable({
@@ -9,7 +10,10 @@ export class AccountService {
   isRequestingAccount = false;
   accounts: string[] = [];
 
-  constructor() {
+  constructor(
+    private appEventsService: AppEventsService,
+    private ngZone: NgZone
+  ) {
     if (AppConfig.enviroment === 'prod') {
       this.web3 = new Web3((window as any).ethereum);
     } else {
@@ -18,8 +22,6 @@ export class AccountService {
     // this.web3.eth.handleRevert = true;
     console.log(AppConfig.enviroment);
     console.log(AppConfig.blockchainNetworkUrl);
-
-
     this.connectWallet();
   }
 
@@ -40,9 +42,12 @@ export class AccountService {
             break;
 
           default:
-            this.accounts = await this.getAccounts();
+            this.accounts = await this.web3.eth.getAccounts();
             break;
         }
+
+        console.log('Accounts:', this.accounts);
+        this.appEventsService.accountList.emit(this.accounts);
 
         console.log('Connected account:', this.accounts[0]);
       } catch (error) {

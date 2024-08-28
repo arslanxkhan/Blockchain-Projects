@@ -1,14 +1,20 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppEventsService {
+  constructor() {}
 
-  constructor() { }
+ private selectedAccount: string = '';
 
-  accountList:EventEmitter<any>= new EventEmitter<any>();
-  SelectedAccount:EventEmitter<any>= new EventEmitter<any>();
+  getSelectedAccount() {
+    return this.selectedAccount;
+  }
 
-  
+  setSelectedAccount(account: any) {
+    this.selectedAccount = account;
+  }
+  accountList: EventEmitter<any> = new EventEmitter<any>();
+  SelectedAccount: EventEmitter<any> = new EventEmitter<any>();
 }

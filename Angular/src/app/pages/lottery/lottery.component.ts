@@ -1,6 +1,6 @@
 import { AppEventsService } from './../../core/services/app-events.service';
 import { LotteryContractService } from './../../core/contractServices/lottery-contract.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AppConfig } from 'src/app/core/constants/appConfig';
 
 @Component({
@@ -24,31 +24,30 @@ export class LotteryComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    var accounts: string[] = [];
-
-    accounts = await this.lotteryContractService.getAccounts();
-    this.account = accounts[0];
-
-    this.isOwner = await this.lotteryContractService.isOwner(this.account);
-    this.appEventsService.accountList.emit(accounts);
-
     this.appEventsService.SelectedAccount.subscribe(async (x) => {
       this.account = x;
       this.isOwner = await this.lotteryContractService.isOwner(this.account);
       await this.updateData();
     });
 
-    await this.updateData();
+    var account = this.appEventsService.getSelectedAccount();
+    if (account) {
+      this.account = account;
+      await this.updateData();
+    }
+    this.isOwner = await this.lotteryContractService.isOwner(this.account);
   }
 
   async updateData() {
     await this.getTicketPrice();
     await this.getTicketCounts();
     await this.getAccountBalance();
+    await this.getParaticipants();
   }
 
   async getParaticipants() {
     this.paraticipants = await this.lotteryContractService.getParaticipants();
+    this.paraticipants = [...new Set(this.paraticipants)];
   }
 
   async getTicketCounts() {

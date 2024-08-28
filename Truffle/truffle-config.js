@@ -46,7 +46,6 @@ const { MNEMONIC, INFURA_PROJECT_ID, ALCHEMY_PROJECT_ID } = process.env;
 
 console.log("MNEMONIC",process.env.MNEMONIC);
 console.log("ALCHEMY_PROJECT_ID",process.env.ALCHEMY_PROJECT_ID);
-console.log("INFURA_PROJECT_ID",process.env.INFURA_PROJECT_ID);
 
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 

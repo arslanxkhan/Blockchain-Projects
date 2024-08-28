@@ -15,9 +15,6 @@ export class VoteContractService {
       voteAbi,
       this.contractAddress
     );
-
-    console.log(voteAbi);
-    console.log(this.contractAddress);
   }
 
   public async getAccounts() {

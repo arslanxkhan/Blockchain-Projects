@@ -46,3 +46,5 @@ Truffle/node_modules
 Truffle/npm-debug.log
 Truffle/yarn-error.log
 Truffle/.env
+Truffle/truffleCompile.ps1
+Truffle/truffleMigrate.ps1
