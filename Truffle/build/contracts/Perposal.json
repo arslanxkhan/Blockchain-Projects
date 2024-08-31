@@ -1,0 +1,76 @@
+{
+  "contractName": "Perposal",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/DAO/Perposal.sol\":\"Perposal\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/DAO/Perposal.sol\":{\"keccak256\":\"0x010d95e20e36552796c3542a9c712335ee6733a3f7cdf608da7dc9df8af9de6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://38ef71e66f2e706a8e61f7cc3f9edd560b3c4728d18e64aae3c61dd32d15602a\",\"dweb:/ipfs/QmTwYqM6iqBEVuHQ2akMrtXor1ny9buRrWcoUFKj9fz4g8\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600e575f80fd5b50603e80601a5f395ff3fe60806040525f80fdfea2646970667358221220fba8871714e44aa1a29cef36aa2200b68b0b5570b9d7ed62ae96bd9a4dc2ae3264736f6c63430008140033",
+  "deployedBytecode": "0x60806040525f80fdfea2646970667358221220fba8871714e44aa1a29cef36aa2200b68b0b5570b9d7ed62ae96bd9a4dc2ae3264736f6c63430008140033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "64:27:13:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "64:27:13:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT \r\npragma solidity ^0.8.20;\r\n\r\n\r\ncontract Perposal{\r\n    \r\n}",
+  "sourcePath": "C:\\Workspace\\Practice\\Blockchain-Projects-main\\Blockchain-Projects-main\\Blockchain-Projects-main\\Truffle\\contracts\\DAO\\Perposal.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/DAO/Perposal.sol",
+    "exportedSymbols": {
+      "Perposal": [
+        1523
+      ]
+    },
+    "id": 1524,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1522,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".20"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "34:24:13"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Perposal",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1523,
+        "linearizedBaseContracts": [
+          1523
+        ],
+        "name": "Perposal",
+        "nameLocation": "73:8:13",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 1524,
+        "src": "64:27:13",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "34:57:13"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.20+commit.a1b79de6.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-08-30T10:35:54.241Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
