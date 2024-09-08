@@ -65,7 +65,7 @@ module.exports = {
       host: "127.0.0.1", // Localhost (default: none)
       port: 7500, // Standard Ganache GUI port (default: none)
       network_id: "5700", // Any network (default: none)
-      gas: 10000000,
+      gas: 120000000,
     },
     infura_holesky: {
       provider: () =>

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract Token is ERC20 {
     address private owner;
 
-    constructor(uint256 initialSupply) ERC20("Arsl", "MAK") {
+    constructor(uint256 initialSupply) ERC20("Arsl", "MAK")  {
         _mint(msg.sender, initialSupply);
         owner = msg.sender;
     }

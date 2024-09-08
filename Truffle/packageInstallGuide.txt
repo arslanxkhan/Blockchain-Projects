@@ -2,5 +2,5 @@ npm install -g truffle
 npm install @truffle/hdwallet-provider
 npm install dotenv
 npm install @openzeppelin/contracts
-
+npm install chai
 
